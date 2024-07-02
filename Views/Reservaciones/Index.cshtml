@@ -1,0 +1,53 @@
+﻿@using TuProyecto.Models
+@model IEnumerable<Reservaciones>
+
+<h1>Lista de Reservaciones</h1>
+<br />
+<a asp-action="Crear" asp-controller="Reservaciones">Nueva reservación</a>
+<a asp-action="Index" asp-controller="Home">Regresar</a>
+<br />
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.FechaReservacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.NombreCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(Model => Model.ApellidoCliente)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(Model => item.FechaReservacion)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(Model => item.NombreCliente)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(Model => item.ApellidoCliente)
+                    </th>
+                    <th>
+                        <a asp-action="Detalle" asp-route-Id="@item.IdReservacion">Expandir</a>
+                        <a asp-action="Editar" asp-route-Id="@item.IdReservacion">Editar</a>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <br />
+    <div>
+        <h2>Lo sentimos, no tenemos datos por mostrar</h2>
+    </div>
+}

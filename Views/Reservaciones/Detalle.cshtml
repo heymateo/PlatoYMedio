@@ -1,0 +1,96 @@
+﻿@using TuProyecto.Models
+@model IEnumerable<Reservaciones>
+
+<h1>Reservación</h1>
+<br />
+<a asp-action="Index" asp-controller="Reservaciones">Regresar</a>
+<br />
+@if (Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NombreCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApellidoCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TelefonoCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DireccionCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaReservacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoraReservacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CantidadPersonas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroMesa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CodigoReserva)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cancelada)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApellidoCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TelefonoCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DireccionCliente)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaReservacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoraReservacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CantidadPersonas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumeroMesa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CodigoReserva)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cancelada)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div>
+        <h2>Lo sentimos, no tenemos datos por mostrar</h2>
+    </div>
+}

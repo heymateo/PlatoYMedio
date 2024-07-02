@@ -1,0 +1,101 @@
+﻿@using TuProyecto.Models
+@model Reservaciones
+
+@if (Model == null)
+{
+    @switch (Convert.ToInt32(ViewData["TipoError"]))
+    {
+        case 1:
+            <h4>Los datos de la reservación buscada no existen en nuestro sistema</h4>
+            break;
+        case 2:
+            <h4>No se encontró un identificador dentro de la solicitud</h4>
+            break;
+        case 3:
+            <h4>Se presentó un error al procesar la solicitud</h4>
+            break;
+        default:
+            <h4>Ha ocurrido algo inesperado, por favor intenta más tarde</h4>
+            break;
+    }
+}
+else
+{
+    <h1>Editar la Reservación</h1>
+    <br />
+    <a asp-action="Index" asp-controller="Reservaciones">Regresar</a>
+    <div>
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div>
+                <label asp-for="NombreCliente"></label>
+                <input asp-for="NombreCliente" />
+                <span asp-validation-for="NombreCliente" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="ApellidoCliente"></label>
+                <input asp-for="ApellidoCliente" />
+                <span asp-validation-for="ApellidoCliente" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="TelefonoCliente"></label>
+                <input asp-for="TelefonoCliente" />
+                <span asp-validation-for="TelefonoCliente" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="EmailCliente"></label>
+                <input asp-for="EmailCliente" />
+                <span asp-validation-for="EmailCliente" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="DireccionCliente"></label>
+                <input asp-for="DireccionCliente" />
+                <span asp-validation-for="DireccionCliente" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="FechaReservacion"></label>
+                <input asp-for="FechaReservacion" type="date" />
+                <span asp-validation-for="FechaReservacion" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="HoraReservacion"></label>
+                <input asp-for="HoraReservacion" type="time" />
+                <span asp-validation-for="HoraReservacion" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="CantidadPersonas"></label>
+                <input asp-for="CantidadPersonas" type="number" />
+                <span asp-validation-for="CantidadPersonas" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="NumeroMesa"></label>
+                <input asp-for="NumeroMesa" type="number" />
+                <span asp-validation-for="NumeroMesa" style="color:red"></span>
+            </div>
+
+            <div>
+                <label asp-for="CodigoReserva"></label>
+                <input asp-for="CodigoReserva" readonly />
+            </div>
+
+            <div>
+                <input asp-for="Cancelada" type="checkbox" />
+                <label asp-for="Cancelada"></label>
+            </div>
+
+            <div>
+                <input asp-for="IdReservacion" type="hidden" />
+                <input type="submit" value="Modificar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+}
